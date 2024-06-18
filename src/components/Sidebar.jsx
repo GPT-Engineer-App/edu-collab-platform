@@ -22,7 +22,7 @@ const Sidebar = () => {
             <Link to="/register" className="text-xl hover:text-gray-400">Register</Link>
           </li>
           <li className="mb-4">
-            <Link to="/content-editor" className="text-xl hover:text-gray-400">Content Editor</Link>
+            <Link to="/project-dashboard" className="text-xl hover:text-gray-400">Project Dashboard</Link>
           </li>
         </ul>
       </nav>
