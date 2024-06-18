@@ -22,20 +22,28 @@ const ContentEditor = () => {
 
   // Function to handle saving content and SEO data
   const handleSave = async () => {
-    await post('/save-content', { content, tags, metaTags, description, keywords });
-    alert('Content and SEO data saved!');
+    try {
+      await post('/save-content', { content, tags, metaTags, description, keywords });
+      alert('Content and SEO data saved!');
+    } catch (error) {
+      alert('Failed to save content and SEO data!');
+    }
   };
 
   const handleLoad = async () => {
-    const savedData = await get('/load-content');
-    if (savedData) {
-      setContent(savedData.content);
-      setTags(savedData.tags);
-      setMetaTags(savedData.metaTags);
-      setDescription(savedData.description);
-      setKeywords(savedData.keywords);
-    } else {
-      alert('No content found!');
+    try {
+      const savedData = await get('/load-content');
+      if (savedData) {
+        setContent(savedData.content);
+        setTags(savedData.tags);
+        setMetaTags(savedData.metaTags);
+        setDescription(savedData.description);
+        setKeywords(savedData.keywords);
+      } else {
+        alert('No content found!');
+      }
+    } catch (error) {
+      alert('Failed to load content and SEO data!');
     }
   };
 
@@ -57,8 +65,12 @@ const ContentEditor = () => {
   const handleSchedule = async () => {
     const contentId = 'example-content-id'; // Replace with actual content ID logic
     const publishDateTime = new Date(`${publishDate}T${publishTime}`);
-    await scheduleContent(contentId, publishDateTime);
-    alert('Content scheduled for publishing!');
+    try {
+      await scheduleContent(contentId, publishDateTime);
+      alert('Content scheduled for publishing!');
+    } catch (error) {
+      alert('Failed to schedule content!');
+    }
   };
 
   return (
