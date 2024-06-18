@@ -7,23 +7,27 @@ const ContentEditor = () => {
   const [content, setContent] = useState('');
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState('');
+  const [metaTags, setMetaTags] = useState('');
+  const [description, setDescription] = useState('');
+  const [keywords, setKeywords] = useState('');
 
   useEffect(() => {
     handleLoad();
   }, []);
 
   const handleSave = async () => {
-    // Save content and tags to local storage or send to backend
-    await post('/save-content', { content, tags });
-    alert('Content saved!');
+    await post('/save-content', { content, tags, metaTags, description, keywords });
+    alert('Content and SEO data saved!');
   };
 
   const handleLoad = async () => {
-    // Load content and tags from local storage or fetch from backend
     const savedData = await get('/load-content');
     if (savedData) {
       setContent(savedData.content);
       setTags(savedData.tags);
+      setMetaTags(savedData.metaTags);
+      setDescription(savedData.description);
+      setKeywords(savedData.keywords);
     } else {
       alert('No content found!');
     }
@@ -65,6 +69,29 @@ const ContentEditor = () => {
             </button>
           </div>
         ))}
+      </div>
+      <div className="flex flex-col mb-4 w-full max-w-4xl">
+        <input
+          type="text"
+          value={metaTags}
+          onChange={(e) => setMetaTags(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+          placeholder="Meta Tags"
+        />
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+          placeholder="Description"
+        />
+        <input
+          type="text"
+          value={keywords}
+          onChange={(e) => setKeywords(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+          placeholder="Keywords"
+        />
       </div>
       <div className="flex space-x-4">
         <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
