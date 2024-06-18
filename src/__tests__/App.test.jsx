@@ -12,3 +12,12 @@ test('renders header and footer', () => {
   expect(screen.getByText(/Header/i)).toBeInTheDocument();
   expect(screen.getByText(/Footer/i)).toBeInTheDocument();
 });
+
+test('renders media library link', () => {
+  render(
+    <Router>
+      <App />
+    </Router>
+  );
+  expect(screen.getByText(/Media Library/i)).toBeInTheDocument();
+});
