@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ref, uploadBytes, getDownloadURL, listAll } from 'firebase/storage';
 import { storage } from '../firebaseConfig';
 
+import { v4 as uuidv4 } from 'uuid';
+
 const MediaLibrary = () => {
+  useEffect(() => {
+    fetchMediaList();
+  }, []);
   const [file, setFile] = useState(null);
   const [mediaList, setMediaList] = useState([]);
 
@@ -13,7 +18,8 @@ const MediaLibrary = () => {
   const handleUpload = async () => {
     if (!file) return;
 
-    const storageRef = ref(storage, `media/${file.name}`);
+    const contentId = uuidv4();
+    const storageRef = ref(storage, `media/${contentId}-${file.name}`);
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
     console.log('File available at', downloadURL);
