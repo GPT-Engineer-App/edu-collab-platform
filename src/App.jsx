@@ -21,6 +21,7 @@ import KnowledgeBase from "./pages/KnowledgeBase.jsx";
 import DecisionLogs from "./pages/DecisionLogs.jsx";
 import DataManagement from "./pages/DataManagement.jsx";
 import UserPersonas from "./pages/UserPersonas.jsx";
+import ExperienceMaps from "./pages/ExperienceMaps.jsx";
 
 function App() {
   useEffect(() => {
@@ -51,6 +52,7 @@ function App() {
               <Route path="/decision-logs" element={<DecisionLogs />} />
               <Route path="/data-management" element={<DataManagement />} />
               <Route path="/user-personas" element={<UserPersonas />} />
+              <Route path="/experience-maps" element={<ExperienceMaps />} />
             </Routes>
           </main>
           <Footer />
