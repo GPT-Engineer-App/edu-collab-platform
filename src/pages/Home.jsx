@@ -23,6 +23,7 @@ const Home = () => {
       </div>
       {statement && <Slider statement={statement} />}
       <Link to="/media-library" className="text-xl text-blue-500 hover:underline">Go to Media Library</Link>
+      <Link to="/kanban-board" className="text-xl text-blue-500 hover:underline mt-4">Go to Kanban Board</Link>
     </div>
   );
 };
