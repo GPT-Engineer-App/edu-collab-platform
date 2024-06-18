@@ -10,6 +10,7 @@ import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import CourseManagement from "./pages/CourseManagement.jsx";
 import TaskManagement from "./pages/TaskManagement.jsx";
+import ContentEditor from "./pages/ContentEditor.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/course-management" element={<CourseManagement />} />
             <Route path="/task-management" element={<TaskManagement />} />
+            <Route path="/content-editor" element={<ContentEditor />} />
             </Routes>
           </main>
           <Footer />
