@@ -53,6 +53,7 @@ function App() {
               <Route path="/data-management" element={<DataManagement />} />
               <Route path="/user-personas" element={<UserPersonas />} />
               <Route path="/experience-maps" element={<ExperienceMaps />} />
+              <Route path="/experience-maps" element={<ExperienceMaps />} />
             </Routes>
           </main>
           <Footer />
