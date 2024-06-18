@@ -26,41 +26,12 @@ const DataManagement = () => {
   const updateData = async (rowIndex, columnId, value) => {
     try {
       const updatedRow = { ...data[rowIndex], [columnId]: value };
-      const updatedData = [...data];
-      updatedData[rowIndex] = updatedRow;
-      setData(updatedData);
-
       await put(`/user-data/${updatedRow.id}`, updatedRow);
+      const updatedData = data.map((row, index) => (index === rowIndex ? updatedRow : row));
+      setData(updatedData);
     } catch (error) {
       console.error('Error updating data:', error);
     }
-  };
-
-  const EditableCell = ({
-    value: initialValue,
-    row: { index },
-    column: { id },
-    updateData,
-  }) => {
-    const [value, setValue] = useState(initialValue);
-
-    const onChange = e => {
-      setValue(e.target.value);
-    };
-
-    const onBlur = () => {
-      updateData(index, id, value);
-    };
-
-    useEffect(() => {
-      setValue(initialValue);
-    }, [initialValue]);
-
-    return <input value={value} onChange={onChange} onBlur={onBlur} />;
-  };
-
-  const defaultColumn = {
-    Cell: EditableCell,
   };
 
   const columns = React.useMemo(
@@ -72,14 +43,17 @@ const DataManagement = () => {
       {
         Header: 'Name',
         accessor: 'name',
+        Cell: EditableCell,
       },
       {
         Header: 'Email',
         accessor: 'email',
+        Cell: EditableCell,
       },
       {
         Header: 'Role',
         accessor: 'role',
+        Cell: EditableCell,
       },
     ],
     []
@@ -89,13 +63,16 @@ const DataManagement = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
+    page,
+    state: { pageIndex, pageSize },
+    gotoPage,
+    setPageSize,
   } = useTable(
     {
       columns,
       data,
-      defaultColumn,
+      defaultColumn: { Cell: EditableCell },
       updateData,
     },
     useGlobalFilter,
@@ -123,7 +100,7 @@ const DataManagement = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map((row, i) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -137,8 +114,63 @@ const DataManagement = () => {
           })}
         </tbody>
       </table>
+      <div className="pagination">
+        <button onClick={() => gotoPage(0)} disabled={!pageIndex}>
+          {'<<'}
+        </button>{' '}
+        <button onClick={() => gotoPage(pageIndex - 1)} disabled={!pageIndex}>
+          {'<'}
+        </button>{' '}
+        <button onClick={() => gotoPage(pageIndex + 1)} disabled={pageIndex + 1 >= pageSize}>
+          {'>'}
+        </button>{' '}
+        <button onClick={() => gotoPage(pageSize - 1)} disabled={pageIndex + 1 >= pageSize}>
+          {'>>'}
+        </button>{' '}
+        <span>
+          Page{' '}
+          <strong>
+            {pageIndex + 1} of {pageSize}
+          </strong>{' '}
+        </span>
+        <select
+          value={pageSize}
+          onChange={e => {
+            setPageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 20, 30, 40, 50].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
+};
+
+const EditableCell = ({
+  value: initialValue,
+  row: { index },
+  column: { id },
+  updateData,
+}) => {
+  const [value, setValue] = useState(initialValue);
+
+  const onChange = e => {
+    setValue(e.target.value);
+  };
+
+  const onBlur = () => {
+    updateData(index, id, value);
+  };
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  return <input value={value} onChange={onChange} onBlur={onBlur} />;
 };
 
 export default DataManagement;
