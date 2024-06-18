@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slider-container {
+  margin: 20px 0;
+}
+
+.slider-symbol {
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.slider-symbol.expanded {
+  transform: rotate(45deg);
+}
+
+.slider-content {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.statement-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
