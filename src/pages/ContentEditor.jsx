@@ -1,30 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { get, post } from '../services/api';
 
 const ContentEditor = () => {
   const [content, setContent] = useState('');
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState('');
 
-  const handleSave = () => {
-    // Save content to local storage or send to backend
-    localStorage.setItem('content', content);
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
+  const handleSave = async () => {
+    // Save content and tags to local storage or send to backend
+    await post('/save-content', { content, tags });
     alert('Content saved!');
   };
 
-  const handleLoad = () => {
-    // Load content from local storage or fetch from backend
-    const savedContent = localStorage.getItem('content');
-    if (savedContent) {
-      setContent(savedContent);
+  const handleLoad = async () => {
+    // Load content and tags from local storage or fetch from backend
+    const savedData = await get('/load-content');
+    if (savedData) {
+      setContent(savedData.content);
+      setTags(savedData.tags);
     } else {
       alert('No content found!');
     }
+  };
+
+  const handleAddTag = () => {
+    if (tagInput.trim() !== '' && !tags.includes(tagInput.trim())) {
+      setTags([...tags, tagInput.trim()]);
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-3xl font-bold mb-4">Content Editor</h1>
       <ReactQuill value={content} onChange={setContent} className="mb-4 w-full max-w-4xl" />
+      <div className="flex space-x-4 mb-4">
+        <input
+          type="text"
+          value={tagInput}
+          onChange={(e) => setTagInput(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          placeholder="Add a tag"
+        />
+        <button onClick={handleAddTag} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Add Tag
+        </button>
+      </div>
+      <div className="flex flex-wrap mb-4">
+        {tags.map((tag, index) => (
+          <div key={index} className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full mr-2 mb-2 flex items-center">
+            <span>{tag}</span>
+            <button onClick={() => handleRemoveTag(tag)} className="ml-2 text-red-500 hover:text-red-700">
+              &times;
+            </button>
+          </div>
+        ))}
+      </div>
       <div className="flex space-x-4">
         <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Save
