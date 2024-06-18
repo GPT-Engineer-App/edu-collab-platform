@@ -6,7 +6,8 @@ const DataManagement = () => {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [deleteConfirmation, setDeleteConfirmation] = useState({ show: false, id: null }); // State for delete confirmation
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteUserId, setDeleteUserId] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -37,14 +38,25 @@ const DataManagement = () => {
     }
   };
 
-  const deleteData = async (id) => {
+  const handleDeleteRequest = (userId) => {
+    setDeleteUserId(userId);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
     try {
-      await del(`/user-data/${id}`);
-      setData(data.filter(row => row.id !== id));
-      setDeleteConfirmation({ show: false, id: null });
+      await del(`/user-data/${deleteUserId}`);
+      setData(data.filter(user => user.id !== deleteUserId));
+      setShowDeleteModal(false);
+      setDeleteUserId(null);
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.error('Error deleting user data:', error);
     }
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setDeleteUserId(null);
   };
 
   const EditableCell = ({
@@ -96,7 +108,7 @@ const DataManagement = () => {
         Header: 'Actions',
         Cell: ({ row }) => (
           <button
-            onClick={() => setDeleteConfirmation({ show: true, id: row.original.id })}
+            onClick={() => handleDeleteRequest(row.original.id)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             Delete
@@ -159,24 +171,13 @@ const DataManagement = () => {
           })}
         </tbody>
       </table>
-      {deleteConfirmation.show && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded shadow">
-            <p>Are you sure you want to delete this data?</p>
-            <div className="flex space-x-4 mt-4">
-              <button
-                onClick={() => deleteData(deleteConfirmation.id)}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => setDeleteConfirmation({ show: false, id: null })}
-                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-              >
-                No
-              </button>
-            </div>
+      {showDeleteModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this user data? This action cannot be undone.</p>
+            <button onClick={confirmDelete} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+            <button onClick={cancelDelete} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
           </div>
         </div>
       )}
