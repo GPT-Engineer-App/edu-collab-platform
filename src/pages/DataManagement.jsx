@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTable, usePagination, useRowSelect, useGlobalFilter, useAsyncDebounce } from 'react-table';
-import { get, put } from '../services/api';
+import { get, put, del } from '../services/api'; // Import the delete function
 
 const DataManagement = () => {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [deleteConfirmation, setDeleteConfirmation] = useState({ show: false, id: null }); // State for delete confirmation
 
   useEffect(() => {
     fetchData();
@@ -33,6 +34,16 @@ const DataManagement = () => {
       await put(`/user-data/${updatedRow.id}`, updatedRow);
     } catch (error) {
       console.error('Error updating data:', error);
+    }
+  };
+
+  const deleteData = async (id) => {
+    try {
+      await del(`/user-data/${id}`);
+      setData(data.filter(row => row.id !== id));
+      setDeleteConfirmation({ show: false, id: null });
+    } catch (error) {
+      console.error('Error deleting data:', error);
     }
   };
 
@@ -80,6 +91,17 @@ const DataManagement = () => {
       {
         Header: 'Role',
         accessor: 'role',
+      },
+      {
+        Header: 'Actions',
+        Cell: ({ row }) => (
+          <button
+            onClick={() => setDeleteConfirmation({ show: true, id: row.original.id })}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Delete
+          </button>
+        ),
       },
     ],
     []
@@ -137,6 +159,27 @@ const DataManagement = () => {
           })}
         </tbody>
       </table>
+      {deleteConfirmation.show && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded shadow">
+            <p>Are you sure you want to delete this data?</p>
+            <div className="flex space-x-4 mt-4">
+              <button
+                onClick={() => deleteData(deleteConfirmation.id)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setDeleteConfirmation({ show: false, id: null })}
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
