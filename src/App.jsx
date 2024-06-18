@@ -20,6 +20,7 @@ import Notifications from "./pages/Notifications.jsx";
 import KnowledgeBase from "./pages/KnowledgeBase.jsx";
 import DecisionLogs from "./pages/DecisionLogs.jsx";
 import DataManagement from "./pages/DataManagement.jsx";
+import UserPersonas from "./pages/UserPersonas.jsx";
 
 function App() {
   useEffect(() => {
@@ -49,6 +50,7 @@ function App() {
               <Route path="/knowledge-base" element={<KnowledgeBase />} />
               <Route path="/decision-logs" element={<DecisionLogs />} />
               <Route path="/data-management" element={<DataManagement />} />
+              <Route path="/user-personas" element={<UserPersonas />} />
             </Routes>
           </main>
           <Footer />
