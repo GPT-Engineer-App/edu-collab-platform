@@ -27,6 +27,9 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link to="/media-library" className="text-xl hover:text-gray-400">Media Library</Link>
           </li>
+          <li className="mb-4">
+            <Link to="/decision-logs" className="text-xl hover:text-gray-400">Decision Logs</Link>
+          </li>
         </ul>
       </nav>
     </aside>
