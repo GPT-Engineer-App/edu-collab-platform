@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { auth } from '../firebaseConfig';
+import { auth, signInWithGoogle } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../store/slices/authSlice';
@@ -17,6 +17,15 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       dispatch(login(userCredential.user));
+      navigate('/');
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -63,6 +72,12 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <button
+        onClick={handleGoogleLogin}
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 };
