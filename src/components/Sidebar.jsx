@@ -42,6 +42,9 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link to="/knowledge-base" className="text-xl hover:text-gray-400">Knowledge Base</Link>
           </li>
+          <li className="mb-4">
+            <Link to="/kanban-board" className="text-xl hover:text-gray-400">Kanban Board</Link>
+          </li>
         </ul>
       </nav>
     </aside>
