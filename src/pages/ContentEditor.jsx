@@ -15,6 +15,7 @@ const ContentEditor = () => {
     handleLoad();
   }, []);
 
+  // Function to handle saving content and SEO data
   const handleSave = async () => {
     await post('/save-content', { content, tags, metaTags, description, keywords });
     alert('Content and SEO data saved!');
