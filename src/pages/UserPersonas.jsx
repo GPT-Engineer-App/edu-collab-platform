@@ -26,6 +26,18 @@ const UserPersonas = () => {
         'Time management issues',
         'Balancing studies with part-time job',
       ],
+      touchpoints: [
+        'Login',
+        'Course Management',
+        'Task Management',
+        'Content Editor',
+        'Notifications',
+      ],
+      opportunities: [
+        'Provide more interactive content',
+        'Offer time management tools',
+        'Integrate internship opportunities',
+      ],
     },
     {
       role: 'Teacher',
@@ -50,6 +62,18 @@ const UserPersonas = () => {
         'Keeping students engaged',
         'Managing administrative tasks',
         'Balancing teaching and research',
+      ],
+      touchpoints: [
+        'Login',
+        'Course Management',
+        'Task Management',
+        'Content Editor',
+        'Notifications',
+      ],
+      opportunities: [
+        'Offer tools for interactive sessions',
+        'Automate administrative tasks',
+        'Provide research collaboration opportunities',
       ],
     },
   ];
@@ -89,6 +113,22 @@ const UserPersonas = () => {
             <ul>
               {persona.painPoints.map((painPoint, i) => (
                 <li key={i}>{painPoint}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="mb-2">
+            <strong>Touchpoints:</strong>
+            <ul>
+              {persona.touchpoints.map((touchpoint, i) => (
+                <li key={i}>{touchpoint}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="mb-2">
+            <strong>Opportunities:</strong>
+            <ul>
+              {persona.opportunities.map((opportunity, i) => (
+                <li key={i}>{opportunity}</li>
               ))}
             </ul>
           </div>
