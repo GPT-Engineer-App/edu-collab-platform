@@ -4,52 +4,48 @@ const UserPersonas = () => {
   const personas = [
     {
       role: 'Student',
-      name: 'Alex Johnson',
       demographics: {
-        age: 20,
-        gender: 'Male',
+        age: '18-25',
         education: 'Undergraduate',
-        location: 'New York, USA',
+        location: 'Urban',
       },
       goals: [
-        'Complete the course with good grades',
-        'Understand the subject deeply',
-        'Get a good internship',
+        'Achieve high grades',
+        'Gain practical knowledge',
+        'Secure internships and job placements',
       ],
       behaviors: [
         'Attends classes regularly',
-        'Participates in group discussions',
-        'Uses online resources for additional learning',
+        'Participates in extracurricular activities',
+        'Uses online resources for study',
       ],
       painPoints: [
-        'Difficulty in understanding complex topics',
-        'Time management issues',
-        'Balancing studies with part-time job',
+        'High tuition fees',
+        'Balancing study and part-time work',
+        'Limited access to practical experiences',
       ],
     },
     {
       role: 'Teacher',
-      name: 'Dr. Emily Smith',
       demographics: {
-        age: 45,
-        gender: 'Female',
-        education: 'PhD in Computer Science',
-        location: 'San Francisco, USA',
+        age: '30-50',
+        education: 'Postgraduate',
+        location: 'Urban',
       },
       goals: [
-        'Provide quality education to students',
-        'Stay updated with the latest in the field',
-        'Publish research papers',
+        'Deliver effective lessons',
+        'Engage students in learning',
+        'Stay updated with the latest teaching methods',
       ],
       behaviors: [
-        'Prepares lectures in advance',
-        'Engages students with interactive sessions',
-        'Uses various teaching aids and tools',
+        'Prepares lesson plans',
+        'Uses technology in the classroom',
+        'Attends professional development workshops',
       ],
       painPoints: [
-        'Keeping students engaged',
-        'Managing administrative tasks',
-        'Balancing teaching and research',
+        'Large class sizes',
+        'Administrative workload',
+        'Keeping students motivated',
       ],
     },
   ];
@@ -59,36 +55,34 @@ const UserPersonas = () => {
       <h1 className="text-3xl font-bold mb-4">User Personas</h1>
       {personas.map((persona, index) => (
         <div key={index} className="w-full max-w-4xl bg-white p-4 rounded shadow mb-4">
-          <h2 className="text-xl font-bold mb-2">{persona.role}: {persona.name}</h2>
+          <h2 className="text-xl font-bold mb-2">{persona.role}</h2>
           <div className="mb-2">
-            <strong>Demographics:</strong>
-            <ul>
-              {Object.entries(persona.demographics).map(([key, value]) => (
-                <li key={key}>{key.charAt(0).toUpperCase() + key.slice(1)}: {value}</li>
+            <h3 className="text-lg font-bold">Demographics</h3>
+            <p>Age: {persona.demographics.age}</p>
+            <p>Education: {persona.demographics.education}</p>
+            <p>Location: {persona.demographics.location}</p>
+          </div>
+          <div className="mb-2">
+            <h3 className="text-lg font-bold">Goals</h3>
+            <ul className="list-disc list-inside">
+              {persona.goals.map((goal, idx) => (
+                <li key={idx}>{goal}</li>
               ))}
             </ul>
           </div>
           <div className="mb-2">
-            <strong>Goals:</strong>
-            <ul>
-              {persona.goals.map((goal, i) => (
-                <li key={i}>{goal}</li>
+            <h3 className="text-lg font-bold">Behaviors</h3>
+            <ul className="list-disc list-inside">
+              {persona.behaviors.map((behavior, idx) => (
+                <li key={idx}>{behavior}</li>
               ))}
             </ul>
           </div>
           <div className="mb-2">
-            <strong>Behaviors:</strong>
-            <ul>
-              {persona.behaviors.map((behavior, i) => (
-                <li key={i}>{behavior}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="mb-2">
-            <strong>Pain Points:</strong>
-            <ul>
-              {persona.painPoints.map((painPoint, i) => (
-                <li key={i}>{painPoint}</li>
+            <h3 className="text-lg font-bold">Pain Points</h3>
+            <ul className="list-disc list-inside">
+              {persona.painPoints.map((painPoint, idx) => (
+                <li key={idx}>{painPoint}</li>
               ))}
             </ul>
           </div>
