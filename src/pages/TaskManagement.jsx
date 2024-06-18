@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { get, post, put, del } from '../services/api';
 import { v4 as uuidv4 } from 'uuid';
+import Chat from '../components/Chat';
+import Comments from '../components/Comments';
 
 const TaskManagement = () => {
   const [tasks, setTasks] = useState([]);
@@ -130,6 +132,8 @@ const TaskManagement = () => {
                   <p>{task.description}</p>
                   <p className="text-sm text-gray-600">Assignee: {task.assignee}</p>
                   <p className="text-sm text-gray-600">Content ID: {task.contentId}</p>
+                  <Chat contentId={task.contentId} />
+                  <Comments contentId={task.contentId} />
                   <div className="flex space-x-4 mt-2">
                     <button onClick={() => handleEditTask(task)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
                       Edit

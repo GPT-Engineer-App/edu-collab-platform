@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Chat from '../components/Chat';
+import Comments from '../components/Comments';
 import { get } from '../services/api';
 
 const ProjectDashboard = () => {
@@ -29,6 +31,8 @@ const ProjectDashboard = () => {
                   <h2 className="text-xl font-bold">{project.name}</h2>
                   <p>{project.description}</p>
                   <p className="text-sm text-gray-600">Content ID: {project.contentId}</p>
+                  <Chat contentId={project.contentId} />
+                  <Comments contentId={project.contentId} />
                 </div>
               </li>
             ))}
