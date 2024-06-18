@@ -20,7 +20,7 @@ const ContentEditor = () => {
     handleLoad();
   }, []);
 
-  // Function to handle saving content and SEO data
+  // Function to handle saving content and SEO information
   const handleSave = async () => {
     await post('/save-content', { content, tags, metaTags, description, keywords });
     alert('Content and SEO data saved!');
@@ -55,10 +55,10 @@ const ContentEditor = () => {
   };
 
   const handleSchedule = async () => {
-    const contentId = 'example-content-id'; // Replace with actual content ID logic
+    const contentId = 'example-content-id'; // TODO: Replace with actual content ID logic
     const publishDateTime = new Date(`${publishDate}T${publishTime}`);
     await scheduleContent(contentId, publishDateTime);
-    alert('Content scheduled for publishing!');
+    alert('Content has been scheduled for publishing!');
   };
 
   return (
