@@ -36,6 +36,9 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link to="/user-personas" className="text-xl hover:text-gray-400">User Personas</Link>
           </li>
+          <li className="mb-4">
+            <Link to="/card-sorting" className="text-xl hover:text-gray-400">Card Sorting</Link>
+          </li>
         </ul>
       </nav>
     </aside>
