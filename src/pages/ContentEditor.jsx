@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { get, post } from '../services/api';
-import { format } from 'date-fns';
 import { scheduleContent } from '../services/schedulerService';
 
 const ContentEditor = () => {
