@@ -17,8 +17,8 @@ test('renders register page and handles registration', () => {
     </Provider>
   );
 
-  expect(screen.getByText(/Register/i)).toBeInTheDocument();
-  fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'test@example.com' } });
-  fireEvent.change(screen.getByLabelText(/Password/i), { target: { value: 'password' } });
-  fireEvent.click(screen.getByText(/Register/i));
+  expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText(/Email Address/i), { target: { value: 'test@example.com' } });
+  fireEvent.change(screen.getByLabelText(/Create Password/i), { target: { value: 'password' } });
+  fireEvent.click(screen.getByText(/Sign Up/i));
 });

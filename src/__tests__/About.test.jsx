@@ -4,6 +4,6 @@ import About from '../pages/About';
 
 test('renders about page', () => {
   render(<About />);
-  expect(screen.getByText(/About Page/i)).toBeInTheDocument();
-  expect(screen.getByText(/Learn more about us on this page/i)).toBeInTheDocument();
+  expect(screen.getByText(/About Us/i)).toBeInTheDocument();
+  expect(screen.getByText(/Discover more about our mission and values/i)).toBeInTheDocument();
 });
