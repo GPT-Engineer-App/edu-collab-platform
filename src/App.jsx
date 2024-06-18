@@ -12,6 +12,7 @@ import ProjectDashboard from "./pages/ProjectDashboard.jsx";
 import CourseManagement from "./pages/CourseManagement.jsx";
 import TaskManagement from "./pages/TaskManagement.jsx";
 import ContentEditor from "./pages/ContentEditor.jsx";
+import KanbanBoard from "./pages/KanbanBoard.jsx";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/project-dashboard" element={<ProjectDashboard />} />
             <Route path="/task-management" element={<TaskManagement />} />
             <Route path="/content-editor" element={<ContentEditor />} />
+            <Route path="/kanban-board" element={<KanbanBoard />} />
             </Routes>
           </main>
           <Footer />
