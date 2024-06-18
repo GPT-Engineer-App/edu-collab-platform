@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { auth } from '../firebaseConfig';
 import Chat from '../components/Chat';
 import Comments from '../components/Comments';
 import { get } from '../services/api';
+import { getInAppNotifications } from '../services/notificationService';
 
 const ProjectDashboard = () => {
   const [projects, setProjects] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -17,6 +20,15 @@ const ProjectDashboard = () => {
     };
 
     fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      const data = await getInAppNotifications();
+      setNotifications(data);
+    };
+
+    fetchNotifications();
   }, []);
 
   return (
@@ -39,6 +51,23 @@ const ProjectDashboard = () => {
           </ul>
         ) : (
           <p>No projects found.</p>
+        )}
+      </div>
+      <div className="notifications">
+        <h2 className="text-xl font-bold mb-4">Notifications</h2>
+        {notifications.length > 0 ? (
+          <ul>
+            {notifications.map((notification) => (
+              <li key={notification.id} className="mb-4">
+                <div className="p-4 bg-gray-200 rounded">
+                  <p>{notification.message}</p>
+                  <p className="text-sm text-gray-600">Content ID: {notification.contentId}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No notifications found.</p>
         )}
       </div>
     </div>

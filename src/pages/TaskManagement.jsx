@@ -3,6 +3,7 @@ import { get, post, put, del } from '../services/api';
 import { v4 as uuidv4 } from 'uuid';
 import Chat from '../components/Chat';
 import Comments from '../components/Comments';
+import { sendEmailNotification, createInAppNotification } from '../services/notificationService';
 
 const TaskManagement = () => {
   const [tasks, setTasks] = useState([]);
@@ -38,6 +39,8 @@ const TaskManagement = () => {
       setTaskName('');
       setTaskDescription('');
       setAssignee('');
+      await sendEmailNotification(assignee, 'New Task Assigned', `You have been assigned a new task: ${taskName}`);
+      await createInAppNotification(newTask.contentId, `New task created: ${taskName}`);
     } catch (error) {
       console.error('Error creating task:', error);
     }
@@ -65,6 +68,8 @@ const TaskManagement = () => {
       setTaskName('');
       setTaskDescription('');
       setAssignee('');
+      await sendEmailNotification(assignee, 'Task Updated', `The task has been updated: ${taskName}`);
+      await createInAppNotification(updatedTask.contentId, `Task updated: ${taskName}`);
     } catch (error) {
       console.error('Error updating task:', error);
     }
