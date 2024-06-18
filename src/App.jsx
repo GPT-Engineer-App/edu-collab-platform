@@ -14,6 +14,7 @@ import TaskManagement from "./pages/TaskManagement.jsx";
 import ContentEditor from "./pages/ContentEditor.jsx";
 import KanbanBoard from "./pages/KanbanBoard.jsx";
 import MediaLibrary from "./components/MediaLibrary.jsx";
+import Notifications from "./pages/Notifications.jsx";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/content-editor" element={<ContentEditor />} />
             <Route path="/kanban-board" element={<KanbanBoard />} />
             <Route path="/media-library" element={<MediaLibrary />} />
+            <Route path="/notifications" element={<Notifications />} />
             </Routes>
           </main>
           <Footer />
