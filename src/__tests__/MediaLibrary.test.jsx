@@ -6,7 +6,7 @@ test('renders media library and handles file upload', () => {
   render(<MediaLibrary />);
 
   // Check if the media library is rendered
-  expect(screen.getByText(/Upload/i)).toBeInTheDocument();
+  expect(screen.getByText(/Add Media/i)).toBeInTheDocument();
 
   // Simulate file upload
   const file = new File(['dummy content'], 'example.png', { type: 'image/png' });

@@ -9,8 +9,8 @@ test('renders header and footer', () => {
       <App />
     </Router>
   );
-  expect(screen.getByText(/Header/i)).toBeInTheDocument();
-  expect(screen.getByText(/Footer/i)).toBeInTheDocument();
+  expect(screen.getByText(/Welcome to MyApp/i)).toBeInTheDocument();
+  expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
 });
 
 test('renders media library link', () => {
@@ -19,5 +19,5 @@ test('renders media library link', () => {
       <App />
     </Router>
   );
-  expect(screen.getByText(/Media Library/i)).toBeInTheDocument();
+  expect(screen.getByText(/Explore Media/i)).toBeInTheDocument();
 });
