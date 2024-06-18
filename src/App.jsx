@@ -15,6 +15,7 @@ import ContentEditor from "./pages/ContentEditor.jsx";
 import KanbanBoard from "./pages/KanbanBoard.jsx";
 import MediaLibrary from "./components/MediaLibrary.jsx";
 import Notifications from "./pages/Notifications.jsx";
+import KnowledgeBase from "./pages/KnowledgeBase.jsx";
 
 function App() {
   return (
@@ -30,14 +31,15 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/course-management" element={<CourseManagement />} />
-            <Route path="/project-dashboard" element={<ProjectDashboard />} />
-            <Route path="/task-management" element={<TaskManagement />} />
-            <Route path="/content-editor" element={<ContentEditor />} />
-            <Route path="/kanban-board" element={<KanbanBoard />} />
-            <Route path="/media-library" element={<MediaLibrary />} />
-            <Route path="/notifications" element={<Notifications />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/course-management" element={<CourseManagement />} />
+              <Route path="/project-dashboard" element={<ProjectDashboard />} />
+              <Route path="/task-management" element={<TaskManagement />} />
+              <Route path="/content-editor" element={<ContentEditor />} />
+              <Route path="/kanban-board" element={<KanbanBoard />} />
+              <Route path="/media-library" element={<MediaLibrary />} />
+              <Route path="/notifications" element={<Notifications />} />
+              <Route path="/knowledge-base" element={<KnowledgeBase />} />
             </Routes>
           </main>
           <Footer />
