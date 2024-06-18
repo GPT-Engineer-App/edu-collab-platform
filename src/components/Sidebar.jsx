@@ -30,6 +30,9 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link to="/decision-logs" className="text-xl hover:text-gray-400">Decision Logs</Link>
           </li>
+          <li className="mb-4">
+            <Link to="/data-management" className="text-xl hover:text-gray-400">Data Management</Link>
+          </li>
         </ul>
       </nav>
     </aside>

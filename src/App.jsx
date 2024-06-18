@@ -19,6 +19,7 @@ import MediaLibrary from "./components/MediaLibrary.jsx";
 import Notifications from "./pages/Notifications.jsx";
 import KnowledgeBase from "./pages/KnowledgeBase.jsx";
 import DecisionLogs from "./pages/DecisionLogs.jsx";
+import DataManagement from "./pages/DataManagement.jsx";
 
 function App() {
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/knowledge-base" element={<KnowledgeBase />} />
               <Route path="/decision-logs" element={<DecisionLogs />} />
+              <Route path="/data-management" element={<DataManagement />} />
             </Routes>
           </main>
           <Footer />
