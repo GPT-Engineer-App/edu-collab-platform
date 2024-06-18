@@ -22,6 +22,7 @@ import DecisionLogs from "./pages/DecisionLogs.jsx";
 import DataManagement from "./pages/DataManagement.jsx";
 import UserPersonas from "./pages/UserPersonas.jsx";
 import ExperienceMaps from "./pages/ExperienceMaps.jsx";
+import CardSorting from "./pages/CardSorting.jsx";
 
 function App() {
   useEffect(() => {
@@ -53,6 +54,7 @@ function App() {
               <Route path="/data-management" element={<DataManagement />} />
               <Route path="/user-personas" element={<UserPersonas />} />
               <Route path="/experience-maps" element={<ExperienceMaps />} />
+              <Route path="/card-sorting" element={<CardSorting />} />
             </Routes>
           </main>
           <Footer />
