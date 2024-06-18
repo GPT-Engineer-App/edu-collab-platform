@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { get, post } from '../services/api';
+import { format } from 'date-fns';
+import { scheduleContent } from '../services/schedulerService';
 
 const ContentEditor = () => {
   const [content, setContent] = useState('');
@@ -11,6 +13,8 @@ const ContentEditor = () => {
   const [description, setDescription] = useState('');
   const [keywords, setKeywords] = useState('');
   const [isPreview, setIsPreview] = useState(false);
+  const [publishDate, setPublishDate] = useState('');
+  const [publishTime, setPublishTime] = useState('');
 
   useEffect(() => {
     handleLoad();
@@ -48,6 +52,13 @@ const ContentEditor = () => {
 
   const togglePreview = () => {
     setIsPreview(!isPreview);
+  };
+
+  const handleSchedule = async () => {
+    const contentId = 'example-content-id'; // Replace with actual content ID logic
+    const publishDateTime = new Date(`${publishDate}T${publishTime}`);
+    await scheduleContent(contentId, publishDateTime);
+    alert('Content scheduled for publishing!');
   };
 
   return (
@@ -110,12 +121,37 @@ const ContentEditor = () => {
               placeholder="Keywords"
             />
           </div>
+          <div className="flex flex-col mb-4 w-full max-w-4xl">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="publishDate">
+              Publish Date
+            </label>
+            <input
+              type="date"
+              id="publishDate"
+              value={publishDate}
+              onChange={(e) => setPublishDate(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+            />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="publishTime">
+              Publish Time
+            </label>
+            <input
+              type="time"
+              id="publishTime"
+              value={publishTime}
+              onChange={(e) => setPublishTime(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+            />
+          </div>
           <div className="flex space-x-4">
             <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Save
             </button>
             <button onClick={handleLoad} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               Load
+            </button>
+            <button onClick={handleSchedule} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+              Schedule
             </button>
           </div>
         </>
