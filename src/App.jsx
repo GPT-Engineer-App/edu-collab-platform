@@ -27,11 +27,11 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/course-management" element={<CourseManagement />} />
-            <Route path="/project-dashboard" element={<ProjectDashboard />} />
-            <Route path="/task-management" element={<TaskManagement />} />
-            <Route path="/content-editor" element={<ContentEditor />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/course-management" element={<CourseManagement />} />
+              <Route path="/project-dashboard" element={<ProjectDashboard />} />
+              <Route path="/task-management" element={<TaskManagement />} />
+              <Route path="/content-editor" element={<ContentEditor />} />
             </Routes>
           </main>
           <Footer />
