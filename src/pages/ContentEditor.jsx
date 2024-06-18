@@ -55,6 +55,7 @@ const ContentEditor = () => {
   };
 
   const handleSchedule = async () => {
+    const contentId = 'example-content-id'; // Replace with actual content ID logic
     const publishDateTime = new Date(`${publishDate}T${publishTime}`);
     await scheduleContent(contentId, publishDateTime);
     alert('Content scheduled for publishing!');
