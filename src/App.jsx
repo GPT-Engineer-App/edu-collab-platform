@@ -7,6 +7,9 @@ import Footer from "./components/Footer.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import CourseManagement from "./pages/CourseManagement.jsx";
+import TaskManagement from "./pages/TaskManagement.jsx";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/course-management" element={<CourseManagement />} />
+            <Route path="/task-management" element={<TaskManagement />} />
             </Routes>
           </main>
           <Footer />
