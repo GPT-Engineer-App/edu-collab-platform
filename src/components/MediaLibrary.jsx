@@ -34,13 +34,13 @@ const MediaLibrary = () => {
   };
 
   return (
-    <div className="media-library" style={{ outline: 'none' }}>
-      <input type="file" onChange={handleFileChange} aria-label="Upload media file" tabindex="0" />
-      <button onClick={handleUpload} role="button" tabindex="0">Upload</button>
+    <div className="media-library" style={{ outline: 'none' }} role="region" aria-label="Media Library">
+      <input type="file" onChange={handleFileChange} aria-label="Upload media file" tabIndex="0" />
+      <button onClick={handleUpload} role="button" tabIndex="0">Upload</button>
       <div className="media-list">
         {mediaList.map((url, index) => (
           <div key={index}>
-            <img src={url} alt={`Media item ${index + 1}`} />
+            <img src={url} alt={`Media item ${index + 1}`} tabIndex="0" />
           </div>
         ))}
       </div>
@@ -57,13 +57,19 @@ export default MediaLibrary;
     outline-offset: 2px;
   }
 
-  .media-library button {
+  .media-library button,
+  .media-library input[type="file"] {
     background-color: #005a9e; /* High contrast background */
     color: #fff; /* High contrast text */
+    border: 2px solid #000; /* High contrast border */
   }
 
   .media-library button:hover,
-  .media-library button:focus {
+  .media-library button:focus,
+  .media-library input[type="file"]:hover,
+  .media-library input[type="file"]:focus {
     background-color: #004080; /* Darker shade for hover and focus */
+    outline: 2px solid #ff0; /* High contrast outline */
+    outline-offset: 2px;
   }
 `}</style>

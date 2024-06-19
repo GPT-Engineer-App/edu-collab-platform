@@ -26,7 +26,7 @@ const Register = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-5xl font-bold mb-4">Register</h1>
-      <form onSubmit={handleRegister} className="w-full max-w-sm">
+      <form onSubmit={handleRegister} className="w-full max-w-sm" aria-label="Register Form">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
             Email
@@ -64,6 +64,7 @@ const Register = () => {
             className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             role="button"
             tabIndex="0"
+            aria-label="Register Button"
           >
             Register
           </button>

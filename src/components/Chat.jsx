@@ -11,6 +11,7 @@ const Chat = ({ contentId }) => {
   useEffect(() => {
     setQ(query(messagesRef, orderBy('createdAt')));
   }, [contentId]);
+
   const [messages] = useCollectionData(q, {
     idField: 'id',
     refField: 'ref',
@@ -54,22 +55,3 @@ const Chat = ({ contentId }) => {
 };
 
 export default Chat;
-```
-
-```css
-.chat {
-  background-color: #f9f9f9; /* Improved color contrast */
-  color: #333; /* Improved color contrast */
-}
-
-.message.sent {
-  background-color: #d1e7dd; /* Improved color contrast */
-}
-
-.message.received {
-  background-color: #f8d7da; /* Improved color contrast */
-}
-
-input:focus, button:focus {
-  outline: 2px solid #0056b3; /* Focus indicator */
-}

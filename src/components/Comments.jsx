@@ -48,9 +48,9 @@ const Comments = ({ contentId }) => {
           onChange={(e) => setComment(e.target.value)} 
           placeholder="Add a comment" 
           aria-label="Add a comment"
-          tabindex="0"
+          tabIndex="0"
         />
-        <button type="submit" tabindex="0">Post</button>
+        <button type="submit" tabIndex="0">Post</button>
       </form>
       <style jsx>{`
         .comments {

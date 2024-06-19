@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
       <h1 className="text-5xl font-bold mb-4">Login</h1>
-      <form onSubmit={handleLogin} className="w-full max-w-sm">
+      <form onSubmit={handleLogin} className="w-full max-w-sm" aria-label="Login Form">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
             Email
@@ -47,7 +47,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             required
-            tabindex="0"
+            tabIndex="0"
             aria-label="Email"
           />
         </div>
@@ -62,7 +62,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             required
-            tabindex="0"
+            tabIndex="0"
             aria-label="Password"
           />
         </div>
@@ -70,9 +70,9 @@ const Login = () => {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
+            className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             role="button"
-            tabindex="0"
+            tabIndex="0"
           >
             Login
           </button>
@@ -80,9 +80,9 @@ const Login = () => {
       </form>
       <button
         onClick={handleGoogleLogin}
-        className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-red-500 mt-4"
+        className="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-red-500 mt-4"
         role="button"
-        tabindex="0"
+        tabIndex="0"
       >
         Sign in with Google
       </button>
