@@ -14,16 +14,16 @@ const Notifications = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">Notifications</h1>
-      <div className="w-full max-w-4xl bg-white p-4 rounded shadow">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200 p-4">
+      <h1 id="notifications-heading" className="text-3xl font-bold mb-4">Notifications</h1>
+      <div className="w-full max-w-4xl bg-white p-4 rounded shadow" role="region" aria-labelledby="notifications-heading">
         {notifications.length > 0 ? (
           <ul>
             {notifications.map((notification) => (
-              <li key={notification.id} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+              <li key={notification.id} className="mb-4" tabindex="0">
+                <div className="p-4 bg-gray-300 rounded" role="alert">
                   <p>{notification.message}</p>
-                  <p className="text-sm text-gray-600">Content ID: {notification.contentId}</p>
+                  <p className="text-sm text-gray-700">Content ID: {notification.contentId}</p>
                 </div>
               </li>
             ))}
@@ -37,3 +37,10 @@ const Notifications = () => {
 };
 
 export default Notifications;
+
+const styles = {
+  ':focus': {
+    outline: '2px solid #000',
+    outlineOffset: '2px',
+  },
+};

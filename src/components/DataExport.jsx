@@ -18,13 +18,27 @@ const DataExport = ({ data }) => {
   };
 
   return (
-    <div className="data-export">
+    <div className="data-export" role="region" aria-labelledby="export-heading">
+      <h2 id="export-heading">Data Export</h2>
       <label htmlFor="format">Select Format:</label>
-      <select id="format" value={selectedFormat} onChange={(e) => setSelectedFormat(e.target.value)}>
+      <select 
+        id="format" 
+        value={selectedFormat} 
+        onChange={(e) => setSelectedFormat(e.target.value)} 
+        tabIndex="0" 
+        aria-label="Select export format"
+      >
         <option value="csv">CSV</option>
         <option value="json">JSON</option>
       </select>
-      <button onClick={handleExport} className="export-button">Export</button>
+      <button 
+        onClick={handleExport} 
+        className="export-button" 
+        tabIndex="0" 
+        aria-label="Export data"
+      >
+        Export
+      </button>
     </div>
   );
 };

@@ -36,8 +36,10 @@ const Register = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             required
+            tabIndex="0"
+            aria-label="Email"
           />
         </div>
         <div className="mb-6">
@@ -49,15 +51,19 @@ const Register = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
             required
+            tabIndex="0"
+            aria-label="Password"
           />
         </div>
         {error && <p className="text-red-500 text-xs italic">{error}</p>}
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
+            role="button"
+            tabIndex="0"
           >
             Register
           </button>

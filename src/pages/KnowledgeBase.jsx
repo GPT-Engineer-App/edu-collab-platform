@@ -59,12 +59,14 @@ const KnowledgeBase = () => {
           onChange={(e) => setTitle(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Title"
+          aria-label="Document Title"
         />
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Content"
+          aria-label="Document Content"
         />
         <input
           type="text"
@@ -72,19 +74,20 @@ const KnowledgeBase = () => {
           onChange={(e) => setTags(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Tags (comma separated)"
+          aria-label="Document Tags"
         />
         <div className="flex space-x-4">
           {editDocumentId ? (
-            <button onClick={handleUpdateDocument} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleUpdateDocument} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabindex="0">
               Update Document
             </button>
           ) : (
-            <button onClick={handleAddDocument} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleAddDocument} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabindex="0">
               Add Document
             </button>
           )}
           {editDocumentId && (
-            <button onClick={() => setEditDocumentId(null)} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => setEditDocumentId(null)} className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500" tabindex="0">
               Cancel
             </button>
           )}
@@ -96,16 +99,16 @@ const KnowledgeBase = () => {
           <ul>
             {documents.map((document) => (
               <li key={document.contentId} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+                <div className="p-4 bg-gray-300 rounded">
                   <h3 className="text-xl font-bold">{document.title}</h3>
                   <p>{document.content}</p>
-                  <p className="text-sm text-gray-600">Tags: {document.tags.join(', ')}</p>
-                  <p className="text-sm text-gray-600">Content ID: {document.contentId}</p>
+                  <p className="text-sm text-gray-700">Tags: {document.tags.join(', ')}</p>
+                  <p className="text-sm text-gray-700">Content ID: {document.contentId}</p>
                   <div className="flex space-x-4 mt-2">
-                    <button onClick={() => handleEditDocument(document)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleEditDocument(document)} className="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" tabindex="0">
                       Edit
                     </button>
-                    <button onClick={() => handleDeleteDocument(document.contentId)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleDeleteDocument(document.contentId)} className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500" tabindex="0">
                       Delete
                     </button>
                   </div>

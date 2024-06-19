@@ -79,11 +79,11 @@ const UserPersonas = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">User Personas</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200 p-4">
+      <h1 className="text-3xl font-bold mb-4" role="heading" aria-level="1">User Personas</h1>
       {personas.map((persona, index) => (
-        <div key={index} className="w-full max-w-4xl bg-white p-4 rounded shadow mb-4">
-          <h2 className="text-xl font-bold mb-2">{persona.role}: {persona.name}</h2>
+        <div key={index} className="w-full max-w-4xl bg-white p-4 rounded shadow mb-4" role="article" tabIndex="0">
+          <h2 className="text-xl font-bold mb-2" role="heading" aria-level="2">{persona.role}: {persona.name}</h2>
           <div className="mb-2">
             <strong>Demographics:</strong>
             <ul>

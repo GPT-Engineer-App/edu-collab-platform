@@ -57,12 +57,12 @@ const ExperienceMaps = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">Experience Maps</h1>
+      <h1 className="text-3xl font-bold mb-4" role="heading" aria-level="1">Experience Maps</h1>
       <div className="w-full max-w-4xl bg-white p-4 rounded shadow mb-4">
-        <h2 className="text-2xl font-bold mb-4">Student Journey</h2>
+        <h2 className="text-2xl font-bold mb-4" role="heading" aria-level="2">Student Journey</h2>
         {studentJourney.map((stage, index) => (
-          <div key={index} className="mb-4 p-4 bg-gray-200 rounded">
-            <h3 className="text-xl font-bold">{stage.stage}</h3>
+          <div key={index} className="mb-4 p-4 bg-gray-300 rounded" role="region" aria-labelledby={`student-stage-${index}`}>
+            <h3 id={`student-stage-${index}`} className="text-xl font-bold">{stage.stage}</h3>
             <p><strong>Emotions:</strong> {stage.emotions}</p>
             <p><strong>Thoughts:</strong> {stage.thoughts}</p>
             <p><strong>Actions:</strong> {stage.actions}</p>
@@ -70,10 +70,10 @@ const ExperienceMaps = () => {
         ))}
       </div>
       <div className="w-full max-w-4xl bg-white p-4 rounded shadow">
-        <h2 className="text-2xl font-bold mb-4">Teacher Journey</h2>
+        <h2 className="text-2xl font-bold mb-4" role="heading" aria-level="2">Teacher Journey</h2>
         {teacherJourney.map((stage, index) => (
-          <div key={index} className="mb-4 p-4 bg-gray-200 rounded">
-            <h3 className="text-xl font-bold">{stage.stage}</h3>
+          <div key={index} className="mb-4 p-4 bg-gray-300 rounded" role="region" aria-labelledby={`teacher-stage-${index}`}>
+            <h3 id={`teacher-stage-${index}`} className="text-xl font-bold">{stage.stage}</h3>
             <p><strong>Emotions:</strong> {stage.emotions}</p>
             <p><strong>Thoughts:</strong> {stage.thoughts}</p>
             <p><strong>Actions:</strong> {stage.actions}</p>

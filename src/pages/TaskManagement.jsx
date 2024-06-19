@@ -95,12 +95,16 @@ const TaskManagement = () => {
           onChange={(e) => setTaskName(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Task Name"
+          aria-label="Task Name"
+          tabIndex="0"
         />
         <textarea
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Task Description"
+          aria-label="Task Description"
+          tabIndex="0"
         />
         <input
           type="text"
@@ -108,19 +112,21 @@ const TaskManagement = () => {
           onChange={(e) => setAssignee(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Assignee"
+          aria-label="Assignee"
+          tabIndex="0"
         />
         <div className="flex space-x-4">
           {editTaskId ? (
-            <button onClick={handleUpdateTask} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleUpdateTask} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Update Task
             </button>
           ) : (
-            <button onClick={handleCreateTask} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleCreateTask} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Create Task
             </button>
           )}
           {editTaskId && (
-            <button onClick={() => setEditTaskId(null)} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => setEditTaskId(null)} className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500" tabIndex="0">
               Cancel
             </button>
           )}
@@ -131,19 +137,19 @@ const TaskManagement = () => {
         {tasks.length > 0 ? (
           <ul>
             {tasks.map((task) => (
-              <li key={task.contentId} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+              <li key={task.contentId} className="mb-4" role="listitem">
+                <div className="p-4 bg-gray-300 rounded">
                   <h3 className="text-xl font-bold">{task.name}</h3>
                   <p>{task.description}</p>
-                  <p className="text-sm text-gray-600">Assignee: {task.assignee}</p>
-                  <p className="text-sm text-gray-600">Content ID: {task.contentId}</p>
+                  <p className="text-sm text-gray-700">Assignee: {task.assignee}</p>
+                  <p className="text-sm text-gray-700">Content ID: {task.contentId}</p>
                   <Chat contentId={task.contentId} />
                   <Comments contentId={task.contentId} />
                   <div className="flex space-x-4 mt-2">
-                    <button onClick={() => handleEditTask(task)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleEditTask(task)} className="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" tabIndex="0">
                       Edit
                     </button>
-                    <button onClick={() => handleDeleteTask(task.contentId)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleDeleteTask(task.contentId)} className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500" tabIndex="0">
                       Delete
                     </button>
                   </div>

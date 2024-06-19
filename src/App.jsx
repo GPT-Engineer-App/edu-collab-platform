@@ -29,11 +29,12 @@ function App() {
   }, []);
   return (
     <Router>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex">
-        <Sidebar />
+        <Sidebar role="navigation" aria-label="Sidebar" />
         <div className="flex flex-col w-full">
-          <Header />
-          <main className="flex-grow">
+          <Header role="banner" />
+          <main id="main-content" className="flex-grow" role="main">
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -55,9 +56,33 @@ function App() {
               <Route path="/experience-maps" element={<ExperienceMaps />} />
             </Routes>
           </main>
-          <Footer />
+          <Footer role="contentinfo" />
         </div>
       </div>
+      <style jsx>{`
+        .skip-link {
+          position: absolute;
+          top: -40px;
+          left: 0;
+          background: #000;
+          color: #fff;
+          padding: 8px;
+          z-index: 100;
+        }
+        .skip-link:focus {
+          top: 0;
+        }
+        .flex {
+          background-color: #fff;
+          color: #000;
+        }
+        .flex a {
+          color: #1a73e8;
+        }
+        .flex a:focus {
+          outline: 2px solid #ff0;
+        }
+      `}</style>
     </Router>
   );
 }

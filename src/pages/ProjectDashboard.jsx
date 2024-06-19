@@ -38,11 +38,11 @@ const ProjectDashboard = () => {
         {projects.length > 0 ? (
           <ul>
             {projects.map((project) => (
-              <li key={project.contentId} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+              <li key={project.contentId} className="mb-4" role="listitem">
+                <div className="p-4 bg-gray-300 rounded">
                   <h2 className="text-xl font-bold">{project.name}</h2>
                   <p>{project.description}</p>
-                  <p className="text-sm text-gray-600">Content ID: {project.contentId}</p>
+                  <p className="text-sm text-gray-700">Content ID: {project.contentId}</p>
                   <Chat contentId={project.contentId} />
                   <Comments contentId={project.contentId} />
                 </div>
@@ -58,10 +58,10 @@ const ProjectDashboard = () => {
         {notifications.length > 0 ? (
           <ul>
             {notifications.map((notification) => (
-              <li key={notification.id} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+              <li key={notification.id} className="mb-4" role="listitem">
+                <div className="p-4 bg-gray-300 rounded">
                   <p>{notification.message}</p>
-                  <p className="text-sm text-gray-600">Content ID: {notification.contentId}</p>
+                  <p className="text-sm text-gray-700">Content ID: {notification.contentId}</p>
                 </div>
               </li>
             ))}

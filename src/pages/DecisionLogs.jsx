@@ -14,16 +14,18 @@ const DecisionLogs = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
       <h1 className="text-3xl font-bold mb-4">Decision Logs</h1>
-      <div className="w-full max-w-4xl bg-white p-4 rounded shadow">
+      <div className="w-full max-w-4xl bg-white p-4 rounded shadow" role="region" aria-labelledby="decision-logs-heading">
         {logs.length > 0 ? (
           <ul>
             {logs.map(log => (
               <li key={log.id} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+                <div className="p-4 bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
                   <p>{log.description}</p>
-                  <p className="text-sm text-gray-600">Timestamp: {log.timestamp.toDate().toString()}</p>
+                  <p className="text-sm text-gray-700">Timestamp: {log.timestamp.toDate().toString()}</p>
+                  {/* Assuming there are images to be rendered, adding alt attributes */}
+                  {log.image && <img src={log.image} alt={`Log image for ${log.description}`} className="mt-2" />}
                 </div>
               </li>
             ))}

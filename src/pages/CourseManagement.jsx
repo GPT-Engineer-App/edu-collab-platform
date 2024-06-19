@@ -137,25 +137,29 @@ const CourseManagement = () => {
           onChange={(e) => setCourseName(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Course Name"
+          aria-label="Course Name"
+          tabIndex="0"
         />
         <textarea
           value={courseDescription}
           onChange={(e) => setCourseDescription(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
           placeholder="Course Description"
+          aria-label="Course Description"
+          tabIndex="0"
         />
         <div className="flex space-x-4">
           {editCourseId ? (
-            <button onClick={handleUpdateCourse} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleUpdateCourse} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Update Course
             </button>
           ) : (
-            <button onClick={handleCreateCourse} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleCreateCourse} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Create Course
             </button>
           )}
           {editCourseId && (
-            <button onClick={() => setEditCourseId(null)} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => setEditCourseId(null)} className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500" tabIndex="0">
               Cancel
             </button>
           )}
@@ -167,15 +171,15 @@ const CourseManagement = () => {
           <ul>
             {courses.map((course) => (
               <li key={course.contentId} className="mb-4">
-                <div className="p-4 bg-gray-200 rounded">
+                <div className="p-4 bg-gray-300 rounded">
                   <h3 className="text-xl font-bold">{course.name}</h3>
                   <p>{course.description}</p>
-                  <p className="text-sm text-gray-600">Content ID: {course.contentId}</p>
+                  <p className="text-sm text-gray-700">Content ID: {course.contentId}</p>
                   <div className="flex space-x-4 mt-2">
-                    <button onClick={() => handleEditCourse(course)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleEditCourse(course)} className="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" tabIndex="0">
                       Edit
                     </button>
-                    <button onClick={() => handleDeleteCourse(course.contentId)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleDeleteCourse(course.contentId)} className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500" tabIndex="0">
                       Delete
                     </button>
                   </div>
@@ -187,25 +191,29 @@ const CourseManagement = () => {
                       onChange={(e) => setModuleName(e.target.value)}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
                       placeholder="Module Name"
+                      aria-label="Module Name"
+                      tabIndex="0"
                     />
                     <textarea
                       value={moduleDescription}
                       onChange={(e) => setModuleDescription(e.target.value)}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
                       placeholder="Module Description"
+                      aria-label="Module Description"
+                      tabIndex="0"
                     />
                     <div className="flex space-x-4">
                       {editModuleId ? (
-                        <button onClick={handleUpdateModule} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button onClick={handleUpdateModule} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
                           Update Module
                         </button>
                       ) : (
-                        <button onClick={() => handleCreateModule(course.contentId)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button onClick={() => handleCreateModule(course.contentId)} className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
                           Create Module
                         </button>
                       )}
                       {editModuleId && (
-                        <button onClick={() => setEditModuleId(null)} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        <button onClick={() => setEditModuleId(null)} className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500" tabIndex="0">
                           Cancel
                         </button>
                       )}
@@ -213,15 +221,15 @@ const CourseManagement = () => {
                     <ul className="mt-4">
                       {modules.filter(module => module.courseId === course.contentId).map((module) => (
                         <li key={module.contentId} className="mb-2">
-                          <div className="p-2 bg-gray-300 rounded">
+                          <div className="p-2 bg-gray-400 rounded">
                             <h5 className="text-lg font-bold">{module.name}</h5>
                             <p>{module.description}</p>
-                            <p className="text-sm text-gray-600">Content ID: {module.contentId}</p>
+                            <p className="text-sm text-gray-700">Content ID: {module.contentId}</p>
                             <div className="flex space-x-4 mt-2">
-                              <button onClick={() => handleEditModule(module)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                              <button onClick={() => handleEditModule(module)} className="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" tabIndex="0">
                                 Edit
                               </button>
-                              <button onClick={() => handleDeleteModule(module.contentId)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                              <button onClick={() => handleDeleteModule(module.contentId)} className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500" tabIndex="0">
                                 Delete
                               </button>
                             </div>

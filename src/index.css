@@ -9,7 +9,7 @@
 .slider-symbol {
   cursor: pointer;
   font-size: 24px;
-  background-color: #007bff;
+  background-color: #0056b3; /* Improved color contrast */
   color: white;
   padding: 10px;
   border-radius: 50%;
@@ -24,8 +24,8 @@
 .slider-content {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  background-color: #e9ecef; /* Improved color contrast */
+  border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
@@ -37,14 +37,18 @@
 
 .input-field {
   padding: 10px;
-  border: 1px solid #ced4da;
+  border: 1px solid #adb5bd; /* Improved color contrast */
   border-radius: 5px;
   flex-grow: 1;
 }
 
+.input-field:focus {
+  outline: 2px solid #0056b3; /* Focus indicator */
+}
+
 .submit-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #0056b3; /* Improved color contrast */
   color: white;
   border: none;
   border-radius: 5px;
@@ -53,5 +57,9 @@
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #003d80; /* Improved color contrast */
+}
+
+.submit-button:focus {
+  outline: 2px solid #003d80; /* Focus indicator */
 }

@@ -9,11 +9,17 @@ const Slider = ({ statement }) => {
 
   return (
     <div className="slider-container">
-      <div className={`slider-symbol ${expanded ? 'expanded' : ''}`} onClick={toggleSlider}>
+      <div
+        className={`slider-symbol ${expanded ? 'expanded' : ''}`}
+        onClick={toggleSlider}
+        role="button"
+        aria-expanded={expanded}
+        tabindex="0"
+      >
         {expanded ? '-' : '+'}
       </div>
       {expanded && (
-        <div className="slider-content">
+        <div className="slider-content" role="region">
           <p>{statement}</p>
         </div>
       )}

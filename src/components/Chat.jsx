@@ -31,20 +31,45 @@ const Chat = ({ contentId }) => {
   };
 
   return (
-    <div className="chat">
-      <div className="messages">
+    <div className="chat" role="region" aria-label="Chat Section">
+      <div className="messages" role="log" aria-live="polite">
         {messages && messages.map(msg => (
-          <div key={msg.id} className={`message ${msg.uid === auth.currentUser.uid ? 'sent' : 'received'}`}>
+          <div key={msg.id} className={`message ${msg.uid === auth.currentUser.uid ? 'sent' : 'received'}`} role="article" tabIndex="0">
             <p><strong>{msg.displayName}</strong>: {msg.text}</p>
           </div>
         ))}
       </div>
-      <form onSubmit={sendMessage}>
-        <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type a message" />
-        <button type="submit">Send</button>
+      <form onSubmit={sendMessage} role="form">
+        <input 
+          value={message} 
+          onChange={(e) => setMessage(e.target.value)} 
+          placeholder="Type a message" 
+          aria-label="Type a message" 
+          tabIndex="0" 
+        />
+        <button type="submit" tabIndex="0">Send</button>
       </form>
     </div>
   );
 };
 
 export default Chat;
+```
+
+```css
+.chat {
+  background-color: #f9f9f9; /* Improved color contrast */
+  color: #333; /* Improved color contrast */
+}
+
+.message.sent {
+  background-color: #d1e7dd; /* Improved color contrast */
+}
+
+.message.received {
+  background-color: #f8d7da; /* Improved color contrast */
+}
+
+input:focus, button:focus {
+  outline: 2px solid #0056b3; /* Focus indicator */
+}

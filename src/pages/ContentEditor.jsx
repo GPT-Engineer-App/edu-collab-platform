@@ -77,12 +77,12 @@ const ContentEditor = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-3xl font-bold mb-4">Content Editor</h1>
       <div className="flex space-x-4 mb-4">
-        <button onClick={togglePreview} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={togglePreview} className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
           {isPreview ? 'Edit Mode' : 'Preview Mode'}
         </button>
       </div>
       {isPreview ? (
-        <div className="w-full max-w-4xl bg-white p-4 rounded shadow">
+        <div className="w-full max-w-4xl bg-white p-4 rounded shadow" role="region" aria-live="polite">
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       ) : (
@@ -93,18 +93,19 @@ const ContentEditor = () => {
               type="text"
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500"
               placeholder="Add a tag"
+              aria-label="Add a tag"
             />
-            <button onClick={handleAddTag} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleAddTag} className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Add Tag
             </button>
           </div>
           <div className="flex flex-wrap mb-4">
             {tags.map((tag, index) => (
-              <div key={index} className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full mr-2 mb-2 flex items-center">
+              <div key={index} className="bg-gray-300 text-gray-900 px-3 py-1 rounded-full mr-2 mb-2 flex items-center">
                 <span>{tag}</span>
-                <button onClick={() => handleRemoveTag(tag)} className="ml-2 text-red-500 hover:text-red-700">
+                <button onClick={() => handleRemoveTag(tag)} className="ml-2 text-red-700 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500" tabIndex="0">
                   &times;
                 </button>
               </div>
@@ -115,22 +116,25 @@ const ContentEditor = () => {
               type="text"
               value={metaTags}
               onChange={(e) => setMetaTags(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Meta Tags"
+              aria-label="Meta Tags"
             />
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Description"
+              aria-label="Description"
             />
             <input
               type="text"
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Keywords"
+              aria-label="Keywords"
             />
           </div>
           <div className="flex flex-col mb-4 w-full max-w-4xl">
@@ -142,7 +146,8 @@ const ContentEditor = () => {
               id="publishDate"
               value={publishDate}
               onChange={(e) => setPublishDate(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500 mb-4"
+              aria-label="Publish Date"
             />
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="publishTime">
               Publish Time
@@ -152,17 +157,18 @@ const ContentEditor = () => {
               id="publishTime"
               value={publishTime}
               onChange={(e) => setPublishTime(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500 mb-4"
+              aria-label="Publish Time"
             />
           </div>
           <div className="flex space-x-4">
-            <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleSave} className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" tabIndex="0">
               Save
             </button>
-            <button onClick={handleLoad} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleLoad} className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-500" tabIndex="0">
               Load
             </button>
-            <button onClick={handleSchedule} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={handleSchedule} className="bg-yellow-700 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" tabIndex="0">
               Schedule
             </button>
           </div>
