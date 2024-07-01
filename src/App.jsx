@@ -1,6 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { useEffect } from 'react';
-import { logDecision } from './services/decisionLogService';
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -17,16 +15,8 @@ import ContentEditor from "./pages/ContentEditor.jsx";
 import KanbanBoard from "./pages/KanbanBoard.jsx";
 import MediaLibrary from "./components/MediaLibrary.jsx";
 import Notifications from "./pages/Notifications.jsx";
-import KnowledgeBase from "./pages/KnowledgeBase.jsx";
-import DecisionLogs from "./pages/DecisionLogs.jsx";
-import DataManagement from "./pages/DataManagement.jsx";
-import UserPersonas from "./pages/UserPersonas.jsx";
-import ExperienceMaps from "./pages/ExperienceMaps.jsx";
 
 function App() {
-  useEffect(() => {
-    logDecision('App component mounted');
-  }, []);
   return (
     <Router>
       <div className="flex">
@@ -40,19 +30,14 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/course-management" element={<CourseManagement />} />
-              <Route path="/project-dashboard" element={<ProjectDashboard />} />
-              <Route path="/task-management" element={<TaskManagement />} />
-              <Route path="/content-editor" element={<ContentEditor />} />
-              <Route path="/kanban-board" element={<KanbanBoard />} />
-              <Route path="/media-library" element={<MediaLibrary />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/knowledge-base" element={<KnowledgeBase />} />
-              <Route path="/decision-logs" element={<DecisionLogs />} />
-              <Route path="/data-management" element={<DataManagement />} />
-              <Route path="/user-personas" element={<UserPersonas />} />
-              <Route path="/experience-maps" element={<ExperienceMaps />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/course-management" element={<CourseManagement />} />
+            <Route path="/project-dashboard" element={<ProjectDashboard />} />
+            <Route path="/task-management" element={<TaskManagement />} />
+            <Route path="/content-editor" element={<ContentEditor />} />
+            <Route path="/kanban-board" element={<KanbanBoard />} />
+            <Route path="/media-library" element={<MediaLibrary />} />
+            <Route path="/notifications" element={<Notifications />} />
             </Routes>
           </main>
           <Footer />

@@ -9,7 +9,7 @@ test('renders home page', () => {
       <Home />
     </Router>
   );
-  expect(screen.getByText(/Homepage/i)).toBeInTheDocument();
-  expect(screen.getByText(/Welcome to our homepage/i)).toBeInTheDocument();
-  expect(screen.getByText(/Explore the Media Library/i)).toBeInTheDocument();
+  expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
+  expect(screen.getByText(/Welcome to the Home Page/i)).toBeInTheDocument();
+  expect(screen.getByText(/Go to Media Library/i)).toBeInTheDocument();
 });

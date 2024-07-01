@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage"; // Add this line
 
@@ -17,16 +17,4 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app); // Add this line
 
-const provider = new GoogleAuthProvider();
-
-const signInWithGoogle = async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    console.log("User signed in: ", user);
-  } catch (error) {
-    console.error("Error signing in with Google: ", error);
-  }
-};
-
-export { app, auth, db, storage, signInWithGoogle };
+export { app, auth, db, storage }; // Add storage to the export

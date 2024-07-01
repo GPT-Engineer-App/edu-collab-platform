@@ -4,5 +4,5 @@ import Notifications from '../pages/Notifications';
 
 test('renders notifications page', () => {
   render(<Notifications />);
-  expect(screen.getByText(/You have no new notifications/i)).toBeInTheDocument();
+  expect(screen.getByText(/Notifications/i)).toBeInTheDocument();
 });

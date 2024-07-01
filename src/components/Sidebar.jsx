@@ -27,33 +27,6 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link to="/media-library" className="text-xl hover:text-gray-400">Media Library</Link>
           </li>
-          <li className="mb-4">
-            <Link to="/decision-logs" className="text-xl hover:text-gray-400">Decision Logs</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/data-management" className="text-xl hover:text-gray-400">Data Management</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/user-personas" className="text-xl hover:text-gray-400">User Personas</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/experience-maps" className="text-xl hover:text-gray-400">Experience Maps</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/knowledge-base" className="text-xl hover:text-gray-400">Knowledge Base</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/kanban-board" className="text-xl hover:text-gray-400">Kanban Board</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/notifications" className="text-xl hover:text-gray-400">Notifications</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/notifications" className="text-xl hover:text-gray-400">Notifications</Link>
-          </li>
-          <li className="mb-4">
-            <Link to="/notifications" className="text-xl hover:text-gray-400">Notifications</Link>
-          </li>
         </ul>
       </nav>
     </aside>
