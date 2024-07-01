@@ -2,7 +2,7 @@ import { auth } from '../firebaseConfig';
 import { get, post } from './api';
 import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.REACT_APP_SENDGRID_API_KEY);
 
 export const sendEmailNotification = async (to, subject, text) => {
   const msg = {
